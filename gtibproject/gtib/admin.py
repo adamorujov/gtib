@@ -1,4 +1,5 @@
 from django.contrib import admin, messages
+from django.contrib.admin import AdminSite
 from django.utils.translation import gettext_lazy as _
 from gtib.models import PageSettings, SocialMediaAccount, NewsTypeModel, NewsCategoryModel, NewsModel, FAQsModel, FormmModel, FormmChoices, OfferQuestionModel, VolunteersModel, EventModel
 
@@ -36,3 +37,8 @@ admin.site.register(FAQsModel)
 admin.site.register(OfferQuestionModel)
 admin.site.register(VolunteersModel)
 admin.site.register(EventModel)
+
+
+AdminSite.site_title = _("Djangoo site admin")
+AdminSite.site_header = _("Djangoo administration")
+AdminSite.index_title = _("Sitee administration")
