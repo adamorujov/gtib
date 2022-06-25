@@ -1,0 +1,191 @@
+<header class="header">
+    {% load static %}
+    {% if pagesettings.headerbgimg %}
+    <img class="header__back" src="{{ pagesettings.headerbgimg.url }}" alt="header__back">
+    {% endif %}
+    <div class="container">
+        <div class="header__content">
+            <div class="header__logo">
+               {% if pagesettings.logo %}
+               <a href="{% url 'gtib:index' %}"><img src="{{ pagesettings.logo.url }}" alt="GTIB Logo"></a>
+               {% endif %} 
+            </div>
+            <div class="header_spacing"></div>
+            <div class="header__info">
+                <p><a href="tel:{{ pagesettings.phone_number }}"> <i class="fa-solid fa-phone"></i>{{ pagesettings.phone_number }}</a></p>
+                <p><a href="mailto:{{ pagesettings.email }}"> <i class="fa-solid fa-envelope"></i>{{ pagesettings.email }}</a></p>
+            </div>
+
+            <div class="header__socials">
+                {% for account in pagesettings.socialmediaaccounts.all %}
+                <a href="{{ account.link }}"><i class="fa-brands fa-{{ account.name }}"></i></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav class="nav">
+    <div class="container">
+        <div class="nav__content">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Biz kimik</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:about' %}" class="nav__submenu-link">Haqqımızda</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:charter' %}" class="nav__submenu-link">Nizamnamə</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:directors' %}" class="nav__submenu-link">İdarə heyəti</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:departments' %}" class="nav__submenu-link">Departamentlər</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Könüllülərimiz</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Tərəfdaşlar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Azərbaycan</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Fəaliyyət</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Layihələr</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Tədbirlər</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Biz mediada</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Media</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Foto</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Video</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Elanlar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Gündəm</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Gənclər Təskilatları</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Gənclər və idman</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Xəbərlər</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">E-Kitab</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Elektron kitablar</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Nəşrlərimiz</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">Əlaqə</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:volunteer' %}" class="nav__submenu-link">Könüllü ol</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Təkliflər</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav__lang">
+                <select name="language" id="language">
+                    <option value="az">AZ</option>
+                    <option value="ru">RU</option>
+                    <option value="eng">EN</option>
+                </select>
+            </div>
+            <div class="nav__mobile-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="nav__mobile">
+    <div class="nav__mobile-content">
+        <a href="#" class="logout"><i class="fa-solid fa-xmark"></i></a>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Biz kimik</a>
+            <div class="nav__mobile-sublinks">
+                <a href="{% url 'gtib:about' %}">-Haqqımızda</a>
+                <a href="{% url 'gtib:charter' %}">-Nizamnamə</a>
+                <a href="{% url 'gtib:directors' %}">-İdarə heyəti</a>
+                <a href="{% url 'gtib:departments' %}">-Departamentlər</a>
+                <a href="#">-Könüllülərimiz</a>
+                <a href="#">-Tərəfdaşlar</a>
+            </div>
+        </div>
+        <a class='aaa' href="#">Azərbaycan</a>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Fəaliyyət</a>
+            <div class="nav__mobile-sublinks">
+                <a href="#">-Layihələr</a>
+                <a href="#">-Tədbirlər</a>
+                <a href="#">-Biz mediada</a>
+            </div>
+        </div>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Media</a>
+            <div class="nav__mobile-sublinks">
+                <a href="#">-Foto</a>
+                <a href="#">-Video</a>
+                <a href="#">-Elanlar</a>
+            </div>
+        </div>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Gündəm</a>
+            <div class="nav__mobile-sublinks">
+                <a href="#">-Gənclər Təskilatları</a>
+                <a href="#">-Gənclər və idman</a>
+                <a href="#">-Xəbərlər</a>
+            </div>
+        </div>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">E-Kitab</a>
+            <div class="nav__mobile-sublinks">
+                <a href="#">-Elektron kitablar</a>
+                <a href="#">-Nəşrlərimiz</a>
+            </div>
+        </div>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Əlaqə</a>
+            <div class="nav__mobile-sublinks">
+                <a href="{% url 'gtib:volunteer' %}">-Könüllü ol</a>
+                <a href="#">-Təkliflər</a>
+            </div>
+        </div>
+    </div>
+</div>

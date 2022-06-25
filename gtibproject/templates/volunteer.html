@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}<title>{{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{ pagesettings.description }}">{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{ pagesettings.keywords }}">{% endblock %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'style/pages/volunteer.css' %}">{% endblock %}
+
+{% block content %}
+
+    <div class="volunteer">
+        <div class="container">
+            <div class="col-md-12 jl_single_page" id="content">
+                <div class="jl_pc_sec_title">
+                    <h3 class="jl_pc_sec_h">Könüllü ol</h3>
+                </div>
+
+                <h4>Könüllü olmaq üçün aşağıdakı formanı doldurub bizə göndərin:</h4>
+                <div class="my-3"></div>
+                <div class="form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row my-4">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                    <input type="text" name="name" class="form-control" required placeholder="Ad Soyad" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" name="email" class="form-control" required placeholder="Eelektron poçt" aria-label="Email" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                                    <input type="number" name="phonenumber" class="form-control" required placeholder="Telefon" aria-label="Telephone" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-map"></i></span>
+                                    <input type="text" name="address" class="form-control" required placeholder="Ünvan" aria-label="Address" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-message"></i></span>
+                                    <input 
+                                    type="text" name="message" class="form-control" required placeholder="İsmarıc" aria-label="Address" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-outline-primary w-50 mx-auto"><i class="fa fa-send"></i> Könüllü ol</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

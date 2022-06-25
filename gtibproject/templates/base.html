@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/56ce35f76e.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    {% block title %}{% endblock %}
+    {% block description %}{% endblock %}
+    {% block keywords %}{% endblock%}
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+    <!-- HEADER STARTS -->
+    {% include 'header.html' %}
+    <!-- HEADER ENDS -->
+
+    <!-- CONTENT STARTS -->
+    {% block content %}{% endblock %}
+    <!-- CONTENT ENDS -->
+
+    <!-- FOOTER STARTS -->
+    {% include 'footer.html' %}
+    <!-- FOOTER ENDS -->
+
+    <script src="{% static 'scripts/script.js' %}"></script>
+
+</body>
+</html>

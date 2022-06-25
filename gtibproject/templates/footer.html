@@ -1,0 +1,55 @@
+<footer class="footer">
+    <div class="footer__back">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    {% if pagesettings.footer_logo %}
+                    <img src="{{ pagesettings.footer_logo.url }}" alt="logo">
+                    {% endif %}
+                    <h2>Sosial şəbəkələrdə <br>
+                        BİZİ İZLƏYİN</h2>
+                    <div class="footer__socials">
+                        {% for account in pagesettings.socialmediaaccounts.all %}
+                        <a href="{{ account.link }}"><img src="{{ account.image.url }}" alt="social"></a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="footer__contacts">
+                    <h2>Bizimlə Əlaqə</h2>
+                    <p><i class="fa-solid fa-location-dot"></i> {{ pagesettings.address }} </p>
+                    <p><i class="fa-solid fa-phone"></i> {{ pagesettings.phone_number }} </p>
+                    <p><i class="fa-solid fa-envelope"></i> {{ pagesettings.email }} </p>
+                    <a href="{{ pagesettings.footer_map_link }}">
+                        {% if pagesettings.footer_map %}
+                        <img src="{{ pagesettings.footer_map.url }}" alt="map">
+                        {% endif %}
+                    </a>
+                </div>
+                <form class="footer__form" method="POST">
+                    {% csrf_token %}
+                    <h2>Bizə Təklif və Sualınız </h2>
+                    <input type="hidden" name="choice" value="offer">
+                    <input type="text" name="name" placeholder="Ad Soyad" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" placeholder="Sizin Mesajınız" required></textarea>
+                    <button type="submit">Göndər</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="copyright">
+    <div class="container">
+        <div class="copyright__content">
+            Bütün hüquqlar qorunur - 2022
+            <div class="copyright__nav">
+                <a href="#">Xəbərlər</a>
+                <a href="#">Layihələr</a>
+                <a href="#">Könüllülər</a>
+                <a href="#">Son Yazılar</a>
+                <a href="#">Bloqlar</a>
+            </div>
+        </div>
+    </div>
+</div>

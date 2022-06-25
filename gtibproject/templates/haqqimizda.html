@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}<title>{{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="{{ pagesettings.description }}">{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{ pagesettings.keywords }}">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="content">
+        <div class="page_title">
+            <h1>Haqqımızda</h1>
+            <div class="title_indicator">
+                <span class="indicator blue_color"></span>
+                <span class="indicator red_color"></span>
+                <span class="indicator green_color"></span>
+            </div>
+        </div>
+        <p>
+            {{ pagesettings.about }}
+        </p>
+    </div>
+</div>
+
+{% endblock %}
