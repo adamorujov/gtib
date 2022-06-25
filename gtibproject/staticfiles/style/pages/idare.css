@@ -1,0 +1,116 @@
+.teams {
+    width: 100%;
+    margin: 1em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.teams .team_member {
+    width: 24.5%;
+    background-color: #fff;
+    padding-bottom:0.9em;
+    border-radius: 0.9em;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.7em;
+    box-shadow: 0px 5px 8px -1px rgba(0,0,0,0.59);
+    -webkit-box-shadow: 0px 5px 8px -1px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 5px 8px -1px rgba(0,0,0,0.59);
+}
+
+.teams .team_member .image_area {
+    width: 100%;
+    height: 70%;
+}
+
+.teams .team_member .image_area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teams .team_member .detail_info {
+    width: 100%;
+    height: 25%;
+    padding:0.7em
+}
+
+.teams .team_member .detail_info h4.member_name {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 0.2em;
+}
+
+.teams .team_member .detail_info .social_media {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5em;
+    margin-left: auto;
+}
+
+.teams .team_member .detail_info .social_media a {
+    font-size: 1.2em;
+    color: #000;
+}
+
+.teams .team_member .detail_info .social_media a:hover,
+.teams .team_member .detail_info .social_media a:focus,
+.teams .team_member .detail_info .social_media a:active {
+    color: #00a9d2;
+    transition: all ease 0.6s;
+}
+
+.teams .team_member .more {
+    width: 45%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 0.7em;
+}
+
+.teams .team_member .more a {
+    font-size: 1.1em;
+    color: #000;
+}
+
+.teams .team_member .more a:hover,
+.teams .team_member .more a:focus,
+.teams .team_member .more a:active {
+    color: #00a9d2;
+    transition: all ease 0.6s;
+}
+
+
+@media (max-width:991px){
+    .teams {
+        margin: 0.8em 0;
+    }
+
+    .teams .team_member {
+        width: 49.5%;
+        padding-bottom:0.9em;
+        border-radius: 0.9em;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.7em;
+    }
+}
+
+@media (max-width:767px){
+    .teams {
+        margin: 0.5em 0;
+    }
+
+    .teams .team_member {
+        width: 100%;
+        padding-bottom:1em;
+        margin-bottom: 0.9em;
+    }
+}
