@@ -39,6 +39,6 @@ admin.site.register(VolunteersModel)
 admin.site.register(EventModel)
 
 
-AdminSite.site_title = _("GTIB site admin")
-AdminSite.site_header = _("GTIB administration")
-AdminSite.index_title = _("GTIB administration")
+AdminSite.site_title = _("GTIB sayt administrasiyası")
+AdminSite.site_header = _("GTIB administrasiyası")
+AdminSite.index_title = _("GTIB administrasiyası")
