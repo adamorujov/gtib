@@ -1,0 +1,538 @@
+a {
+  all: unset;
+  cursor: pointer;
+}
+
+.title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.title-azerbaycan {
+  margin-bottom: 62px;
+  font-size: 24px;
+  margin: 0 10px 62px 20px;
+}
+
+@media screen and (max-width: 1206px) {
+  .title-azerbaycan {
+    font-size: 20px;
+  }
+}
+.title .underlined {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.title .underlined > .blue {
+  background-color: #00a9d2;
+  height: 3px;
+  width: 30%;
+}
+
+.title .underlined > .red {
+  background-color: #d72c18;
+  height: 3px;
+  width: 30%;
+}
+
+.title .underlined > .green {
+  background-color: #00a65a;
+  height: 3px;
+  width: 30%;
+}
+
+.qarabag-img {
+  width: 100%;
+}
+
+.qarabag-img__title {
+  text-align: center;
+  margin-top: 28px;
+  margin-bottom: 48px;
+}
+
+.container-azerbaijan {
+  padding-top: 60px;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  font-family: Merriweather, serif;
+  font-size: 14px;
+  margin-bottom: 105px;
+}
+@media (max-width: 480px) {
+  .container-azerbaijan {
+    font-size: 12px;
+  }
+}
+
+.container-azerbaijan .navigation {
+  margin-top: 50px;
+}
+
+.qarabag__text-box {
+  display: flex;
+  gap: 52px;
+  line-height: 21px;
+  font-weight: 500;
+  margin-bottom: 105px;
+  margin: 20px;
+}
+
+.qarabag__text-img {
+  max-height: 322px;
+  max-width: 322px;
+}
+
+@media (max-width: 1024px) {
+  .qarabag__text-box {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  .qarabag__text-img {
+    width: 100%;
+    margin: 10px;
+  }
+}
+.qarabag-img-container {
+  position: relative;
+}
+
+.qarabag-img-text {
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  left: 0%;
+  bottom: 10px;
+  line-height: 21px;
+  text-align: center;
+  padding: 0px 50px 10px 50px;
+}
+@media (max-width: 600px) {
+  .qarabag-img-text {
+    font-size: 9px;
+    line-height: 11px;
+    font-weight: 300;
+    padding: 0px 5px 0px 5px;
+  }
+}
+
+.azerbaycan-text-box {
+  display: flex;
+  gap: 30px;
+  line-height: 21px;
+  font-weight: 500;
+  margin-bottom: 105px;
+  margin: 20px;
+}
+@media (max-width: 600px) {
+  .azerbaycan-text-box {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.medeniyyet-second-text {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.azerbaycan-text-box__third > img {
+  width: 242px;
+}
+
+.turizm-box-with-icon {
+  display: flex;
+  gap: 18px;
+}
+
+.margin-top-bottom-60 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.books-container {
+  max-width: 976px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 45px;
+}
+
+.book-container {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .book-container {
+    padding: 10px;
+  }
+}
+
+.book-container-top {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  align-items: center;
+}
+.book-container-top > div {
+  width: 50%;
+}
+@media (max-width: 600px) {
+  .book-container-top {
+    flex-direction: column;
+  }
+  .book-container-top > div {
+    width: 100%;
+  }
+}
+.book-container-top > img {
+  width: 200px;
+}
+
+.book-container-top-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.book-container-top-text > div {
+  margin-top: 20px;
+}
+
+.book-container-bottom {
+  margin-top: 30px;
+  font-size: 14px;
+  line-height: 17.6px;
+  color: #808080;
+}
+@media (max-width: 600px) {
+  .book-container-bottom {
+    font-size: 11px;
+  }
+}
+
+.book-button {
+  background-color: #0088B4;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 104px;
+  font-size: 12px;
+  text-align: center;
+}
+.book-button > img {
+  width: 12px;
+  height: 12px;
+  background-color: red;
+}
+
+.books-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.neshirler-container {
+  margin-bottom: 200px;
+}
+
+.neshr-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .neshr-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.neshr-container-left {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 633px;
+}
+@media (max-width: 600px) {
+  .neshr-container-left {
+    gap: 10px;
+  }
+}
+.neshr-container-left .neshr-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+.neshr-container-left .neshr-text {
+  color: #808080;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.neshr-container-left .neshr-data {
+  text-align: right;
+  color: #808080;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  float: right;
+}
+
+.neshr-img {
+  width: 200px;
+  height: 200px;
+}
+
+.neshr-icon {
+  width: 20px;
+}
+
+.form-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #363740;
+  margin-bottom: 300px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.form-contact {
+  width: 100%;
+  max-width: 583px;
+  padding: 20px;
+}
+
+.input-contact {
+  height: 50px;
+  width: 100%;
+  background-color: #F7F9FC;
+  border: 1px solid grey;
+  border-radius: 6px;
+}
+
+.input-contact-message {
+  height: 133px;
+  width: 100%;
+  background-color: #F7F9FC;
+  border: 1px solid grey;
+  border-radius: 6px;
+}
+
+.star {
+  height: 6px;
+  position: relative;
+  bottom: 10px;
+}
+
+.contact-subtitle {
+  font-size: 18px;
+  margin-left: 100px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+@media (max-width: 600px) {
+  .contact-subtitle {
+    padding-left: 20px;
+    margin-left: 0px;
+  }
+}
+
+.contact-button {
+  margin-top: 70px;
+  font-size: 18px;
+  background-color: #01A2D6;
+  width: 176px;
+  height: 52px;
+  border: 1px solid white;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 2px 2px 2px #6e6e6e;
+}
+
+.input-upload {
+  background-color: red;
+  width: 146px;
+  padding: 10px;
+  padding-left: 5px;
+  border-radius: 5px;
+  background-color: #F7F9FC;
+  border: 1px solid grey;
+  text-align: center;
+  color: grey;
+  font-size: 10px;
+}
+
+.xeber-container {
+  display: flex;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.xeber__news-featured {
+  width: 278px;
+}
+
+.xeber-inner {
+  display: flex;
+}
+@media (max-width: 1024px) {
+  .xeber-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+}
+
+.xeber__news-features {
+  max-width: 277px;
+  padding: 15px;
+  border: 1px solid rgb(57, 57, 57);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.xeber-left {
+  max-width: 700px;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 20px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: transparent;
+  margin: auto;
+  padding: 0px;
+  border: 1px solid #888;
+  width: 98%;
+}
+
+/* The Close Button */
+.close {
+  color: #040404;
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  z-index: 10;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.slider-container {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  /* overflow: hidden; */
+}
+
+.button-back {
+  position: absolute;
+  left: 0px;
+}
+
+.button-next {
+  position: absolute;
+  right: 0px;
+}
+
+.slider-img {
+  width: 100%;
+  max-width: 800px;
+  background-color: green;
+  margin: 10px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  background-color: red;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: -50px;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-color: blue;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}/*# sourceMappingURL=styleNurlan.css.map */
