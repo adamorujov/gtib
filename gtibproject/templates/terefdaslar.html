@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}<title>Tərəfdaşlar | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+    <div class="activity">
+        <div class="container">
+            <div class="activity__content">
+                <div class="activity__title">
+                    <img src="{% static 'img/terefdaslar_title.png' %}" alt="title">
+                </div>
+                <div class="departament">
+                    {% for partner in partners %}
+                    <div class="departament__block">
+                        <div class="departament__img">
+                            {% if partner.logo %}
+                            <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                            {% endif %}
+                        </div>
+                        <h2 class="departament_name"><a {% if partner.link %} href="{{ partner.link }}" {% endif %}>{{ partner.name }}</a></h2>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

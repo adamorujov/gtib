@@ -1,5 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils import timezone
+from django.utils.text import slugify
 
 
 class PageSettings(models.Model):
@@ -17,8 +20,20 @@ class PageSettings(models.Model):
     footer_map = models.ImageField("Xəritə", blank=True, null=True)
     footer_map_link = models.URLField("Xəritə linki", blank=True, null=True)
 
-    about = models.TextField("Haqqımızda", blank=True, null=True)
-    charter = models.TextField("Nizamnamə", blank=True, null=True)
+    about1 = models.TextField("Haqqımızda 1-ci hissə", blank=True, null=True)
+    about2 = models.TextField("Haqqımızda 2-ci hissə", blank=True, null=True)
+    about3 = models.TextField("Haqqımızda 3-cü hissə", blank=True, null=True)
+    about4 = models.TextField("Haqqımızda 4-cü hissə", blank=True, null=True)
+
+    about_img1 = models.ImageField("Şəkil 1", blank=True, null=True)
+    about_img2 = models.ImageField("Şəkil 2", blank=True, null=True)
+
+    charter = RichTextField("Nizamnamə", blank=True, null=True)
+    charter_img = models.ImageField("Şəkil", blank=True, null=True)
+
+    karabakh = RichTextUploadingField("Qarabağ Azərbaycandır!", blank=True, null=True)
+    culture = RichTextField("Mədəniyyət", blank=True, null=True)
+    tourism = RichTextField("Turizm", blank=True, null=True)
     
     class Meta:
         verbose_name = "Parametr"
@@ -72,6 +87,9 @@ class NewsCategoryModel(models.Model):
         return self.name
 
 class NewsModel(models.Model):
+    meta_title = models.CharField("Meta başlıq", max_length=300, blank=True, null=True)
+    meta_description = models.TextField("Meta izah", blank=True, null=True)
+    meta_keyword = models.TextField("Meta açar sözlər", blank=True, null=True)
     type = models.ForeignKey(NewsTypeModel, verbose_name="Növ", on_delete=models.CASCADE, related_name="typenews")
     categories = models.ManyToManyField(NewsCategoryModel, verbose_name="Kateqoriyalar", related_name="categorynews")
     image = models.ImageField("Başlıq şəkli")
@@ -79,11 +97,29 @@ class NewsModel(models.Model):
     content = RichTextField("Mövzu")
     pub_date = models.DateTimeField("Nəşr olunma tarixi", auto_now_add=True)
     modified_date = models.DateTimeField("Yenilənmə tarixi", auto_now=True)
+    slug = models.SlugField("Sluq", max_length=300, blank=True, null=True)
 
     class Meta:
         verbose_name = "Xəbər"
         verbose_name_plural = "Xəbərlər"
         ordering = ("-id",)
+
+    def _generate_unique_slug(self):
+        unique_slug = slugify(self.title)
+        num = 1
+        while NewsModel.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(unique_slug, num)
+            num += 1
+        return unique_slug
+
+    def get_typename(self):
+        typename = slugify(self.type.name)
+        return typename
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._generate_unique_slug()
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.title
@@ -162,8 +198,25 @@ class VolunteersModel(models.Model):
     name = models.CharField("Ad soyad", max_length=100)
     email = models.EmailField("Email", max_length=256)
     phone_number = models.CharField("Telefon", max_length=20)
-    address = models.CharField("Ünvan", max_length=256)
-    message = models.TextField("Mesaj")
+    message = models.TextField("Mesaj", blank=True, null=True)
+    apply_date = models.DateTimeField("Müraciət tarixi", default=timezone.now)
+
+    class Meta:
+        verbose_name = "Könüllü müraciəti"
+        verbose_name_plural = "Könüllü müraciətləri"
+        ordering = ("-id",)
+
+    def __str__(self) -> str:
+        return self.name
+
+class VolunteerModel(models.Model):
+    image = models.ImageField("Şəkil", blank=True, null=True)
+    name = models.CharField("Ad", max_length=100)
+    surname = models.CharField("Soyad", max_length=100)
+    fathername = models.CharField("Ata adı", max_length=100)
+    about = models.TextField("Haqqında", blank=True, null=True)
+    start_date = models.DateField("Könüllü olma tarixi", blank=True, null=True)
+    events = models.TextField("İştirak etdiyi tədbirlər", blank=True, null=True)
 
     class Meta:
         verbose_name = "Könüllü"
@@ -171,4 +224,179 @@ class VolunteersModel(models.Model):
         ordering = ("-id",)
 
     def __str__(self) -> str:
+        return self.name + " " + self.surname
+
+
+class DirectorModel(models.Model):
+    image = models.ImageField("Şəkil", blank=True, null=True)
+    name = models.CharField("Ad", max_length=100)
+    surname = models.CharField("Soyad", max_length=100)
+    fathername = models.CharField("Ata adı", max_length=100)
+    position = models.CharField("Vəzifə", max_length=256, blank=True, null=True)
+    about = models.TextField("Haqqında", blank=True, null=True)
+    start_date = models.DateField("Vəzifəyə başlama tarixi", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "İdarə heyəti üzvü"
+        verbose_name_plural = "İdarə heyəti"
+        ordering = ("-id",)
+
+    def __str__(self) -> str:
+        return self.name + " " + self.surname
+
+
+class PartnerModel(models.Model):
+    logo = models.ImageField("Loqo", blank=True, null=True)
+    name = models.CharField("Ad", max_length=256)
+    link = models.URLField("Keçid linki", max_length=256, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Tərəfdaş"
+        verbose_name_plural = "Tərəfdaşlar"
+        ordering = ("-id",)
+
+    def __str__(self) -> str:
         return self.name
+
+
+class YouthOrganizationModel(models.Model):
+    logo = models.ImageField("Loqo", blank=True, null=True)
+    name = models.CharField("Ad", max_length=256)
+    link = models.URLField("Keçid linki", max_length=256, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Gənclər Təşkilatı" 
+        verbose_name_plural = "Gənclər Təşkilatları"
+        ordering = ("-id",)
+
+    def __str__(self) -> str:
+        return self.name
+
+class EBookModel(models.Model):
+    image = models.ImageField("Şəkil")
+    title = models.CharField("Başlıq", max_length=256)
+    description = models.TextField("Haqqında")
+    slug = models.SlugField("Sluq", max_length=256)
+    book_file = models.FileField("Kitab", upload_to="uploads/", blank=True, null=True)
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Elektron kitab"
+        verbose_name_plural = "Elektron kitablar"
+
+    def _generate_unique_slug(self):
+        unique_slug = slugify(self.title)
+        num = 1
+        while EBookModel.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(unique_slug, num)
+            num += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._generate_unique_slug()
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class PrintModel(models.Model):
+    image = models.ImageField("Şəkil")
+    title = models.CharField("Başlıq", max_length=256)
+    description = models.TextField("Haqqında")
+    slug = models.SlugField("Sluq", max_length=256)
+    pub_date = models.DateField("Nəşr tarixi", default=timezone.now)
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Nəşr"
+        verbose_name_plural = "Nəşrlər"
+
+    def _generate_unique_slug(self):
+        unique_slug = slugify(self.title)
+        num = 1
+        while PrintModel.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(unique_slug, num)
+            num += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._generate_unique_slug()
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class OfferModel(models.Model):
+    name = models.CharField("Ad", max_length=50)
+    surname = models.CharField("Soyad", max_length=50)
+    email = models.EmailField("Email", max_length=256)
+    message = models.TextField("Mesaj")
+    sent_date = models.DateTimeField("Göndərildi")
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Təklif"
+        verbose_name_plural = "Təkliflər"
+
+    def save(self, *args, **kwargs):
+        if self.id is None:
+            self.sent_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.name + " " + self.surname
+
+
+class IdeaModel(models.Model):
+    name = models.CharField("Ad", max_length=50)
+    surname = models.CharField("Soyad", max_length=50)
+    email = models.EmailField("Email", max_length=256)
+    file = models.FileField("Fayl", upload_to="uploads/")
+    idea = models.TextField("İdeya haqqında")
+    sent_date = models.DateTimeField("Göndərildi")
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "İdeya"
+        verbose_name_plural = "İdeyalar"
+
+    def save(self, *args, **kwargs):
+        if self.id is None:
+            self.sent_date = timezone.now()
+        super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.name + " " + self.surname
+
+
+class PhotoModel(models.Model):
+    image = models.ImageField("Şəkil")
+    title = models.CharField("Başlıq", max_length=256)
+    pub_date = models.DateField("Tarix")
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Foto"
+        verbose_name_plural = "Fotolar"
+
+    def __str__(self):
+        return self.title
+
+
+class VideoModel(models.Model):
+    image = models.ImageField("Şəkil")
+    title = models.CharField("Başlıq", max_length=256)
+    pub_date = models.DateField("Tarix")
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Foto"
+        verbose_name_plural = "Fotolar"
+
+    def __str__(self):
+        return self.title
+

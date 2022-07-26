@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block title %}<title>Mədəniyyət | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class="container-azerbaijan">
+        <div class="title title-azerbaycan">
+            <div>
+                Mədəniyyət
+            </div>
+            <div class="underlined">
+                <div class="blue"></div>
+                <div class="red"></div>
+                <div class="green"></div>
+            </div>
+        </div>
+        {{ pagesettings.culture | safe }}
+        {% comment %} <div class="container">
+            <div class="azerbaycan-text-box">
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum fames aliquet morbi in nunc.
+                    Pharetra diam posuere s Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem
+                    mauris ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi aliquam
+                    nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetempor neque, curabitur congue ut libero.
+                    Orci lorem mauris ultricies Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci
+                    lorem mauris ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi
+                    aliquam nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetra diam posuere tempor neque.
+                </div>
+                <img class="qarabag__text-img" src="./img/Azerbaycan-bolme/medniyyet-01.svg" alt="">
+            </div>
+            <div class="azerbaycan-text-box medeniyyet-second-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum fames aliquet morbi in nunc.
+                Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem mauris ultricies aliquet et
+                iaculis morbi aliquam nulla. Molestie tellus mauris at non.
+            </div>
+            <div class="azerbaycan-text-box azerbaycan-text-box__third ">
+                <img class="qarabag__text-img" src="./img/Azerbaycan-bolme/medniyyet-02.svg" alt="">
+                <div>
+                    Lorem ipsum dolor sit amet, conse Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna,
+                    dictum fames aliquet morbi in nunc. Pharetra diam posuere s Pharetra diam posuere tempor neque,
+                    curabitur congue ut libero. Orci lorem mauris ultricies aliquet et iaculis morbi aliquam nulla.
+                    Urna, aliquet et iaculis morbi aliquam nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetempor
+                    neque, curabitur congue ut libero. Orci lorem mauris ultricies Pharetra diam posuere tempor neque,
+                    curabitur congue ut libero. Orci lorem mauris ultricies aliquet et iaculis morbi aliquam nulla.
+                    Urna, aliquet et iaculis morbi aliquam nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetra
+                    diam posuere tempor neque.ctetur adipiscing elit. Urna, dictum fames aliquet morbi in nunc. Pharetra
+                    diam posuere s Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem mauris
+                    ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi aliquam nulla.
+                    Urna, dictum fames aliquet morbi in nunc.. Pharetempor neque, curabitur congue ut libero. Orci lorem
+                    mauris ultricies Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem mauris
+                    ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi aliquam nulla.
+                    Urna, dictum fames aliquet morbi in nunc.. Pharetra diam posuere tempor neque.
+                </div>
+
+            </div>
+            <div class="azerbaycan-text-box medeniyyet-second-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum fames aliquet morbi in nunc.
+                Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem mauris ultricies aliquet et
+                iaculis morbi aliquam nulla. Molestie tellus mauris at non. </div>
+            <div class="azerbaycan-text-box">
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, dictum fames aliquet morbi in nunc.
+                    Pharetra diam posuere s Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci lorem
+                    mauris ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi aliquam
+                    nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetempor neque, curabitur congue ut libero.
+                    Orci lorem mauris ultricies Pharetra diam posuere tempor neque, curabitur congue ut libero. Orci
+                    lorem mauris ultricies aliquet et iaculis morbi aliquam nulla. Urna, aliquet et iaculis morbi
+                    aliquam nulla. Urna, dictum fames aliquet morbi in nunc.. Pharetra diam posuere tempor neque.
+                </div>
+                <img class="qarabag__text-img" src="./img/Azerbaycan-bolme/medniyyet-03.svg" alt="">
+            </div>
+        </div> {% endcomment %}
+        <div class="navigation">
+            <div class="navigation__bar">
+                <div class="navigation__number">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="navigation__number navigation__active">
+                    <a href="#">1</a>
+                </div>
+                <div class="navigation__number">
+                    <a href="#">2</a>
+                </div>
+                <div class="navigation__number">
+                    <a href="#">3</a>
+                </div>
+                <div class="navigation__number">
+                    <a href="#">4</a>
+                </div>
+                <div class="navigation__number">
+                    <a href="#">5</a>
+                </div>
+                <div class="navigation__number">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

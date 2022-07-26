@@ -10,11 +10,18 @@
         <div class="intro__content">
             <div class="intro__gallery">
                 <div class="intro__gallery-main">
-                    <img src="{{ firstnews.image.url }}" alt="{{ firstnews.title }}">
+                    <img class="f-image" src="{{ firstnews.image.url }}" alt="{{ firstnews.title }}">
+                    <div class="intro__gallery-title">
+                        <div class="intro__gallery-back"></div>
+                        <div class="f-id" style="display:none;">{{ firstnews.id }}</div>
+                        <p class="f-content">{{ firstnews.content | safe | truncatechars_html:200 }}</p>
+                        <a href="{% url 'gtib:newsdetail' firstnews.get_typename firstnews.slug %}" class="f-link intro__gallery-link">Ətraflı...</a>
+                    </div>
                 </div>
                 <div class="intro__gallery-sub">
                     {% for news in allnews %}
-                    <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                    <div style="display:none;">{{ news.id }}</div>
+                    <img src="{{ news.image.url }}" class="thisimg" alt="{{ news.title }}">
                     {% endfor %}
                 </div>
             </div>
@@ -38,71 +45,71 @@
                 <div class="intro__ad-desc">
                     <span>{{ events.first.content | safe | truncatechars_html:100}}</span>
                 </div>
-                <a href="#" class="intro__ad-more">Ətraflı...</a>
+                <a href="" class="intro__ad-more">Ətraflı...</a>
             </div>
         </div>
     </div>
 </div>
 
 <div class="news">
-    
-    <div class="news__content">
-        <div class="news__blogs">
-            <div class="news__subsection">
-                <div class="news__title">
-                    <img src="{% static 'img/news__title1.png' %}" alt="title"> <a href="#">/ Hamısını göstər</a>
-                </div>
-                <div class="news__flex">
-                    {% for news in projects_and_events_news %}
-                    <div class="news__item">
-                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
-                        <p>{{ news.title }}</p>
-                        <p>{{ news.pub_date | date:"d F Y"}}</p>
+    <div class="container">
+        <div class="news__content">
+            <div class="news__blogs">
+                <div class="news__subsection">
+                    <div class="news__title">
+                        <img src="{% static 'img/news__title1.png' %}" alt="title"> <a href="{% url 'gtib:projects' %}">/ Hamısını göstər</a>
                     </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <hr style="margin-bottom: 50px;">
-            <div class="news__subsection">
-                <div class="news__title">
-                    <img src="{% static 'img/news__title2.png' %}" alt="title"> <a href="#">/ Hamısını göstər</a>
-                </div>
-                <div class="news__flex">
-                    {% for news in youngs_and_sport_news %}
-                    <div class="news__item">
-                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
-                        <p>{{ news.title }}</p>
-                        <p>{{ news.pub_date | date:"d F Y" }}</p>
+                    <div class="news__flex">
+                        {% for news in projects_and_events_news %}
+                        <div class="news__item">
+                            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                            <p><a href="{% url 'gtib:newsdetail' news.get_typename news.slug %}" class="a">{{ news.title }}</a></p>
+                            <p>{{ news.pub_date | date:"d F Y"}}</p>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-            </div>
-        </div>
-        <div class="news__ads">
-            <div class="news__title">
-                <img src="{% static 'img/news__title3.png' %}" alt="title"> <a href="#">/ Hamısını göstər</a>
-            </div>
-            <div class="news__ads-flex">
-                {% for news in announcement_news %}
-                <div class="news__ads-item">
-                    <div class="news__ads-info">
-                        <div>
-                            <h2>{{ news.title }}</h2>
+                <hr style="margin-bottom: 50px;">
+                <div class="news__subsection">
+                    <div class="news__title">
+                        <img src="{% static 'img/news__title2.png' %}" alt="title"> <a href="{% url 'gtib:youngsandsport' %}">/ Hamısını göstər</a>
+                    </div>
+                    <div class="news__flex">
+                        {% for news in youngs_and_sport_news %}
+                        <div class="news__item">
+                            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+                            <p><a href="{% url 'gtib:newsdetail' news.get_typename news.slug %}" class="a">{{ news.title }}</a></p>
                             <p>{{ news.pub_date | date:"d F Y" }}</p>
                         </div>
-                        <img src="{{ news.image.url }}" alt="news ads">
+                        {% endfor %}
                     </div>
-                    <span class="news__ads-desc">
-                        {{ news.content | safe | truncatechars_html:200 }}
-                    </span>
-                    <a href="#" class="intro__ad-more">Ətraflı...</a>
                 </div>
-                {% endfor %}
-                <hr>
+            </div>
+            <div class="news__ads">
+                <div class="news__title">
+                    <img src="{% static 'img/news__title3.png' %}" alt="title"> <a href="{% url 'gtib:anouncements' %}"> Hamısını göstər</a>
+                </div>
+                <div class="news__ads-flex">
+                    {% for news in announcement_news %}
+                    <div class="news__ads-item">
+                        <div class="news__ads-info">
+                            <div>
+                                <h2>{{ news.title }}</h2>
+                                <p>{{ news.pub_date | date:"d F Y" }}</p>
+                            </div>
+                            <img src="{{ news.image.url }}" alt="news ads">
+                        </div>
+                        <span class="news__ads-desc">
+                            {{ news.content | safe | truncatechars_html:200 }}
+                        </span>
+                        <a href="{% url 'gtib:newsdetail' news.get_typename news.slug %}" class="intro__ad-more">Ətraflı...</a>
+                    </div>
+                    {% endfor %}
+                    <hr>
+                </div>
             </div>
         </div>
     </div>
-    
 </div>
 
 <div class="media">
@@ -114,12 +121,10 @@
             <div class="media__blogs">
                 {% for news in in_media_news %}
                 <div class="media__blogs-item">
-                    <div class="img_area">
-                        <img src="{{ news.image.url }}" alt="{{ news.title }}">
-                    </div>
+                    <img src="{{ news.image.url }}" alt="{{ news.title }}">
                     <div class="media__blogs-info">
                         <h2>{{ news.title }}</h2>
-                        <a href="#" class="intro__ad-more">Ətraflı...</a>
+                        <a href="{% url 'gtib:newsdetail' news.get_typename news.slug %}" class="intro__ad-more">Ətraflı...</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -165,4 +170,51 @@
     </div>
 </div>
 
+<div class="partners">
+    <div class="container">
+        <div class="partners__content">
+            {% for partner in partners %}
+            <div class="partners__block">
+                <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+                <p>{{ partner.name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> 
+
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+$(".thisimg").on("click", function(){
+    thisimg = $(this);
+    newsid = $(this).prev();
+    id = $(".f-id");
+    image = $(".f-image");
+    content = $(".f-content");
+    link = $(".f-link");
+    $.ajax({
+        type: "GET",
+        data: {
+            q: newsid.html(),
+        },
+        success: function(data){
+            imagesrc = image.attr("src");
+            previd = id.html()
+
+            id.text(newsid.html());
+            image.attr("src", data.image);
+            content.html(data.content);
+            link.attr("href", `/${data.typename}/${data.slug}/`);
+
+            thisimg.attr("src", imagesrc);
+            newsid.html(previd);
+        },
+    });
+});
+
+</script>
 {% endblock %}

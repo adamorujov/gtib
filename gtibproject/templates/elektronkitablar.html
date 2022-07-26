@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block title %}<title>Elektron kitablar | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-azerbaijan">
+    <div class="title title-azerbaycan">
+        <div>
+            Elektron kitablar
+        </div>
+        <div class="underlined">
+            <div class="blue"></div>
+            <div class="red"></div>
+            <div class="green"></div>
+        </div>
+    </div>
+    <div class="books-container">
+        {% for book in page_obj %}
+        <div class="book-container">
+            <div class="book-container-top">
+                <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                <div class="book-container-top-text">
+                    <div>
+                        {{ book.title | safe }}
+                    </div>
+                    <div class="books-buttons">
+                        <a class="book-button" onclick="share('book{{ book.id }}')"><img src="{% static 'img/electron-kitab/icon-01.png' %}" alt=""> Paylaş
+                        </a>
+                        {% if book.book_file %}
+                        <a id="book{{ book.id }}"class="book-button" href="{{ book.book_file.url }}" target="_blank" download> <img src="{% static 'img/electron-kitab/icon-02.png' %}" alt="">
+                            Yüklə</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="book-container-bottom">
+                {{ book.description | safe }}
+            </div>
+        </div>
+        {% endfor %}
+       
+    </div>
+  
+
+    <div class="navigation">
+        <div class="navigation__bar">
+            {% if page_obj.has_previous %}
+            <div class="navigation__number">
+                <a href="?page={{ page_obj.previous_page_number }}" style="width:100%;"><i class="fa-solid fa-chevron-left"></i></a>
+            </div>
+            {% else %}
+            <div class="navigation__number">
+                <span style="width:100%;"><i class="fa-solid fa-chevron-left"></i></span>
+            </div>
+            {% endif %}
+
+            {% if page_obj.number > 1 %}
+            <div class="navigation__number">
+                <a href="?page=1">1</a>
+            </div>
+            {% if page_obj.number > 2 %}
+            {% if page_obj.number > 3 %}
+            <div class="navigation__number">
+                <span>...</span>
+            </div>
+            {% endif %}
+            <div class="navigation__number">
+                <a href="?page={{ page_obj.number | add:'-1' }}">{{ page_obj.number | add:'-1' }}</a>
+            </div>
+            {% endif %}
+            {% endif %}
+            <div class="navigation__number navigation__active">
+                <a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+            </div>
+
+            {% if page_obj.number < page_obj.paginator.num_pages %}
+            {% if page_obj.number < page_obj.paginator.num_pages|add:'-1' %}
+            <div class="navigation__number">
+                <a href="?page={{ page_obj.number|add:'1'}}">{{ page_obj.number|add:'1' }}</a>
+            </div>
+            {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+            <div class="navigation__number">
+                <span>...</span>
+            </div>
+            {% endif %}
+            {% endif %}
+            <div class="navigation__number">
+                <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+            </div>
+            {% endif %}
+        
+            {% if page_obj.has_next %}
+            <div class="navigation__number">
+                <a href="?page={{ page_obj.next_page_number }}" style="width:100%;"><i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            {% else %}
+            <div class="navigation__number">
+                <span style="width:100%;"><i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+    function share(book) {
+      let sharedBook = document.getElementById(book).getAttribute("href");
+
+      var copyText = document.getElementById(book);
+
+      var copy = navigator.clipboard.writeText(copyText);
+      console.log(copy);
+    
+    }
+  </script>
+
+{% endblock %}

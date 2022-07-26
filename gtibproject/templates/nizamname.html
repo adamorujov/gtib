@@ -1,28 +1,24 @@
 {% extends 'base.html' %}
-{% block title %}<title>{{ pagesettings.title }}</title>{% endblock %}
-{% block description %}<meta name="description" content="{{ pagesettings.description }}">{% endblock %}
-{% block keywords %}<meta name="keywords" content="{{ pagesettings.keywords }}">{% endblock %}
+{% block title %}<title>Nizamnamə | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
 {% load static %}
-{% block css %}<link rel="stylesheet" href="{% static 'style/pages/nizamneme.css' %}">{% endblock %}
 
 {% block content %}
 
 
-<div class="container">
-    <div class="content">
-        <div class="page_title">
-            <h1>Nizamnamə</h1>
-            <div class="title_indicator">
-                <span class="indicator blue_color"></span>
-                <span class="indicator red_color"></span>
-                <span class="indicator green_color"></span>
+<div class="activity">
+    <div class="container">
+        <div class="activity__content">
+            <div class="activity__title">
+                <img src="{% static 'img/charter__title.png' %}" alt="title">
+            </div>
+            <div class="charter">
+                <img src="{{ pagesettings.charter_image.url }}" alt="charter">
+                {{ pagesettings.charter | safe }}
             </div>
         </div>
-        <p>
-            {{ pagesettings.charter }}
-        </p>
     </div>
 </div>
-
 {% endblock %}
 

@@ -10,16 +10,34 @@
                <a href="{% url 'gtib:index' %}"><img src="{{ pagesettings.logo.url }}" alt="GTIB Logo"></a>
                {% endif %} 
             </div>
-            <div class="header_spacing"></div>
             <div class="header__info">
-                <p><a href="tel:{{ pagesettings.phone_number }}"> <i class="fa-solid fa-phone"></i>{{ pagesettings.phone_number }}</a></p>
-                <p><a href="mailto:{{ pagesettings.email }}"> <i class="fa-solid fa-envelope"></i>{{ pagesettings.email }}</a></p>
-            </div>
+                <div class="header__contacts">
+                    <p><span><a href="tel:{{ pagesettings.phone_number }}" style="color:black;"> <i class="fa-solid fa-phone"></i>{{ pagesettings.phone_number }}</a></span></p>
+                    <p><a href="mailto:{{ pagesettings.email }}" style="color:black;"> <i class="fa-solid fa-envelope"></i>{{ pagesettings.email }}</a></p>
+                </div>
 
-            <div class="header__socials">
-                {% for account in pagesettings.socialmediaaccounts.all %}
-                <a href="{{ account.link }}"><i class="fa-brands fa-{{ account.name }}"></i></a>
-                {% endfor %}
+                <div class="header__socials">
+                    {% for account in pagesettings.socialmediaaccounts.all %}
+                    <a href="{{ account.link }}"><i class="fa-brands fa-{{ account.name }}"></i></a>
+                    {% endfor %}
+                </div>
+                <div class="header__clock">
+                    <div class="header__clock-digit">
+                        1
+                    </div>
+                    <div class="header__clock-digit">
+                        1
+                    </div>
+                    <div class="header__clock-divide">
+                        :
+                    </div>
+                    <div class="header__clock-digit">
+                        1
+                    </div>
+                    <div class="header__clock-digit">
+                        1
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,27 +63,41 @@
                             <a href="{% url 'gtib:departments' %}" class="nav__submenu-link">Departamentlər</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Könüllülərimiz</a>
+                            <a href="{% url 'gtib:ourvolunteers' %}" class="nav__submenu-link">Könüllülərimiz</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Tərəfdaşlar</a>
+                            <a href="{% url 'gtib:partners' %}" class="nav__submenu-link">Tərəfdaşlar</a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav__item">
                     <a href="#" class="nav__link">Azərbaycan</a>
+                    <ul class="nav__submenu-list">
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:karabakh' %}" class="nav__submenu-link">Qarabağ Azərbaycandır!!!</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:culture' %}" class="nav__submenu-link">Mədəniyyət</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:tourism' %}" class="nav__submenu-link">Turizm</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="#" class="nav__submenu-link">Xəritə</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav__item">
                     <a href="#" class="nav__link">Fəaliyyət</a>
                     <ul class="nav__submenu-list">
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Layihələr</a>
+                            <a href="{% url 'gtib:projects' %}" class="nav__submenu-link">Layihələr</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Tədbirlər</a>
+                            <a href="{% url 'gtib:events' %}" class="nav__submenu-link">Tədbirlər</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Biz mediada</a>
+                            <a href="{% url 'gtib:ourmedias' %}" class="nav__submenu-link">Biz mediada</a>
                         </li>
                     </ul>
                 </li>
@@ -73,13 +105,13 @@
                     <a href="#" class="nav__link">Media</a>
                     <ul class="nav__submenu-list">
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Foto</a>
+                            <a href="{% url 'gtib:photos' %}" class="nav__submenu-link">Foto</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Video</a>
+                            <a href="" class="nav__submenu-link">Video</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Elanlar</a>
+                            <a href="{% url 'gtib:anouncements' %}" class="nav__submenu-link">Elanlar</a>
                         </li>
                     </ul>
                 </li>
@@ -87,13 +119,13 @@
                     <a href="#" class="nav__link">Gündəm</a>
                     <ul class="nav__submenu-list">
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Gənclər Təskilatları</a>
+                            <a href="{% url 'gtib:youthorganizations' %}" class="nav__submenu-link">Gənclər Təskilatları</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Gənclər və idman</a>
+                            <a href="{% url 'gtib:youngsandsport' %}" class="nav__submenu-link">Gənclər və idman</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Xəbərlər</a>
+                            <a href="{% url 'gtib:news' %}" class="nav__submenu-link">Xəbərlər</a>
                         </li>
                     </ul>
                 </li>
@@ -101,10 +133,10 @@
                     <a href="#" class="nav__link">E-Kitab</a>
                     <ul class="nav__submenu-list">
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Elektron kitablar</a>
+                            <a href="{% url 'gtib:ebooks' %}" class="nav__submenu-link">Elektron kitablar</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Nəşrlərimiz</a>
+                            <a href="{% url 'gtib:prints' %}" class="nav__submenu-link">Nəşrlərimiz</a>
                         </li>
                     </ul>
                 </li>
@@ -115,7 +147,10 @@
                             <a href="{% url 'gtib:volunteer' %}" class="nav__submenu-link">Könüllü ol</a>
                         </li>
                         <li class="nav__submenu-item">
-                            <a href="#" class="nav__submenu-link">Təkliflər</a>
+                            <a href="{% url 'gtib:offers' %}" class="nav__submenu-link">Təkliflər</a>
+                        </li>
+                        <li class="nav__submenu-item">
+                            <a href="{% url 'gtib:ideas' %}" class="nav__submenu-link">İdeya bankı</a>
                         </li>
                     </ul>
                 </li>
@@ -144,47 +179,56 @@
                 <a href="{% url 'gtib:charter' %}">-Nizamnamə</a>
                 <a href="{% url 'gtib:directors' %}">-İdarə heyəti</a>
                 <a href="{% url 'gtib:departments' %}">-Departamentlər</a>
-                <a href="#">-Könüllülərimiz</a>
-                <a href="#">-Tərəfdaşlar</a>
+                <a href="{% url 'gtib:ourvolunteers' %}">-Könüllülərimiz</a>
+                <a href="{% url 'gtib:partners' %}">-Tərəfdaşlar</a>
             </div>
         </div>
-        <a class='aaa' href="#">Azərbaycan</a>
+        <div class="nav__mobile-links">
+            <a class="nav__mobile-link" href="#">Azərbaycan</a>
+            <div class="nav__mobile-sublinks">
+                <a href="{% url 'gtib:karabakh' %}">-Qarabağ Azərbaycandır</a>
+                <a href="{% url 'gtib:culture' %}">-Mədəniyyət</a>
+                <a href="{% url 'gtib:tourism' %}">-Turizm</a>
+                <a href="#">-Xəritə</a>
+            </div>
+        </div>
         <div class="nav__mobile-links">
             <a class="nav__mobile-link" href="#">Fəaliyyət</a>
             <div class="nav__mobile-sublinks">
-                <a href="#">-Layihələr</a>
-                <a href="#">-Tədbirlər</a>
-                <a href="#">-Biz mediada</a>
+                <a href="{% url 'gtib:projects' %}">-Layihələr</a>
+                <a href="{% url 'gtib:events' %}">-Tədbirlər</a>
+                <a href="{% url 'gtib:ourmedias' %}">-Biz mediada</a>
             </div>
         </div>
         <div class="nav__mobile-links">
             <a class="nav__mobile-link" href="#">Media</a>
             <div class="nav__mobile-sublinks">
-                <a href="#">-Foto</a>
+                <a href="{% url 'gtib:photos' %}">-Foto</a>
                 <a href="#">-Video</a>
-                <a href="#">-Elanlar</a>
+                <a href="{% url 'gtib:anouncements' %}">-Elanlar</a>
             </div>
         </div>
         <div class="nav__mobile-links">
             <a class="nav__mobile-link" href="#">Gündəm</a>
             <div class="nav__mobile-sublinks">
-                <a href="#">-Gənclər Təskilatları</a>
-                <a href="#">-Gənclər və idman</a>
-                <a href="#">-Xəbərlər</a>
+                <a href="{% url 'gtib:youthorganizations' %}">-Gənclər Təskilatları</a>
+                <a href="{% url 'gtib:youngsandsport' %}">-Gənclər və idman</a>
+                <a href="{% url 'gtib:news' %}">-Xəbərlər</a>
             </div>
         </div>
         <div class="nav__mobile-links">
             <a class="nav__mobile-link" href="#">E-Kitab</a>
             <div class="nav__mobile-sublinks">
-                <a href="#">-Elektron kitablar</a>
-                <a href="#">-Nəşrlərimiz</a>
+                <a href="{% url 'gtib:ebooks' %}">-Elektron kitablar</a>
+                <a href="{% url 'gtib:prints' %}">-Nəşrlərimiz</a>
             </div>
         </div>
         <div class="nav__mobile-links">
             <a class="nav__mobile-link" href="#">Əlaqə</a>
             <div class="nav__mobile-sublinks">
                 <a href="{% url 'gtib:volunteer' %}">-Könüllü ol</a>
-                <a href="#">-Təkliflər</a>
+                <a href="{% url 'gtib:offers' %}">-Təkliflər</a>
+                <a href="{% url 'gtib:ideas' %}">-İdeyalar</a>
             </div>
         </div>
     </div>

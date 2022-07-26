@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block title %}<title>Könüllülərimiz | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+    <div class="activity">
+        <div class="container">
+            <div class="activity__content">
+                <div class="activity__title">
+                    <img src="{% static 'img/konullulerimiz_title.png' %}" alt="title">
+                </div>
+                <div class="volunteers">
+                    {% for volunteer in page_obj %}
+                    <div class="volunteers__block">
+                        <div class="volunteers__info">
+                            <div class="volounteers__img">
+                                {% if volunteer.image %}
+                                <img src="{{ volunteer.image.url }}" alt="konullulerimiz">
+                                {% endif %}
+                            </div>
+                            <div class="volunteers__about">
+                                <h2>{{ volunteer.name }} {{ volunteer.surname }} {{ volunteer.fathername }}</h2>
+                                <p>{{ volunteer.start_date | date:'d M Y'}} tarixindən etibarən könüllü olaraq fəaliyyət göstərir.</p>
+                                {% if volunteer.events %}
+                                <p>İştirak etdiyi tədbirlər: {{ volunteer.events }}, </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p class="volunteers__desc">{{ volunteer.about }}</p>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    <div class="navigation">
+                        <div class="navigation__bar">
+                            {% if page_obj.has_previous %}
+                            <div class="navigation__number">
+                                <a href="?page={{ page_obj.previous_page_number }}" style="width:100%;"><i class="fa-solid fa-chevron-left"></i></a>
+                            </div>
+                            {% else %}
+                            <div class="navigation__number">
+                                <span style="width:100%;"><i class="fa-solid fa-chevron-left"></i></span>
+                            </div>
+                            {% endif %}
+
+                            {% if page_obj.number > 1 %}
+                            <div class="navigation__number">
+                                <a href="?page=1">1</a>
+                            </div>
+                            {% if page_obj.number > 2 %}
+                            {% if page_obj.number > 3 %}
+                            <div class="navigation__number">
+                                <span>...</span>
+                            </div>
+                            {% endif %}
+                            <div class="navigation__number">
+                                <a href="?page={{ page_obj.number | add:'-1' }}">{{ page_obj.number | add:'-1' }}</a>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+                            <div class="navigation__number navigation__active">
+                                <a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                            </div>
+
+                            {% if page_obj.number < page_obj.paginator.num_pages %}
+                            {% if page_obj.number < page_obj.paginator.num_pages|add:'-1' %}
+                            <div class="navigation__number">
+                                <a href="?page={{ page_obj.number|add:'1'}}">{{ page_obj.number|add:'1' }}</a>
+                            </div>
+                            {% if page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
+                            <div class="navigation__number">
+                                <span>...</span>
+                            </div>
+                            {% endif %}
+                            {% endif %}
+                            <div class="navigation__number">
+                                <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                            </div>
+                            {% endif %}
+                        
+                            {% if page_obj.has_next %}
+                            <div class="navigation__number">
+                                <a href="?page={{ page_obj.next_page_number }}" style="width:100%;"><i class="fa-solid fa-chevron-right"></i></a>
+                            </div>
+                            {% else %}
+                            <div class="navigation__number">
+                                <span style="width:100%;"><i class="fa-solid fa-chevron-right"></i></span>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

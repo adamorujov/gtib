@@ -1,24 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}<title>{{ pagesettings.title }}</title>{% endblock %}
-{% block description %}<meta name="description" content="{{ pagesettings.description }}">{% endblock %}
-{% block keywords %}<meta name="keywords" content="{{ pagesettings.keywords }}">{% endblock %}
+{% block title %}<title>Haqqımızda | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
 {% load static %}
 
 {% block content %}
 
-<div class="container">
-    <div class="content">
-        <div class="page_title">
-            <h1>Haqqımızda</h1>
-            <div class="title_indicator">
-                <span class="indicator blue_color"></span>
-                <span class="indicator red_color"></span>
-                <span class="indicator green_color"></span>
+<div class="activity">
+    <div class="container">
+        <div class="acticity__content">
+            <div class="activity__title">
+                <img src="{% static 'img/haqqimizda_title.png' %}" alt="title">
+            </div>
+            <div class="about__main">
+                <div class="about__flex">
+                    <p>{{ pagesettings.about1 | safe }}</p>
+                    {% if pagesettings.about_img1 %}
+                    <img src="{{ pagesettings.about_img1.url }}" alt="about">
+                    {% endif %}
+                </div>
+                <p>{{ pagesettings.about2 | safe }}</p>
+                <div class="about__flex">
+                    {% if pagesettings.about_img2 %}
+                    <img src="{{ pagesettings.about_img2.url }}" alt="about">
+                    {% endif %}
+                    <p>{{ pagesettings.about3 | safe }}</p>
+                </div>
+                <p>{{ pagesettings.about4 | safe }}</p>
             </div>
         </div>
-        <p>
-            {{ pagesettings.about }}
-        </p>
     </div>
 </div>
 

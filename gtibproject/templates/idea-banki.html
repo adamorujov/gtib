@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}<title>İdeya bankı | {{ pagesettings.title }}</title>{% endblock %}
+{% block description %}<meta name="description" content="">{% endblock %}
+{% block keywords %}<meta name="keywords" content="">{% endblock %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-azerbaijan">
+        <div class="title title-azerbaycan">
+            <div>
+                İdeya bankı
+            </div>
+            <div class="underlined">
+                <div class="blue"></div>
+                <div class="red"></div>
+                <div class="green"></div>
+            </div>
+        </div>
+        <div class="contact-subtitle">
+            İdealarınızı bizimlə paylaşın :
+        </div>
+        <div class="form-container">
+            <form class="form-contact" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="choice" value="idea">
+                <div class="form-control">
+                    <label>Ad<img class="star" src="{% static 'img/star.svg' %}" alt=""></label>
+                    <input class="input-contact" name="name" required type="text">
+                </div>
+                <div class="form-control">
+                    <label>Soyad<img class="star" src="{% static 'img/star.svg' %}" alt=""></label>
+                    <input class="input-contact" name="surname"  required type="text">
+                </div>
+                <div class="form-control">
+                    <label>Email<img class="star" src="{% static 'img/star.svg' %}" alt=""></label>
+                    <input required type="email" class="input-contact" name="email" type="text">
+                </div>
+                <div class="form-control">
+                    <label>Fayl yükləyin<img class="star" src="{% static 'img/star.svg' %}" alt=""></label>
+                    <input required type="file" name="uploadfile" id="img" style="display:none;"/>
+                    <label class="input-upload" for="img">(pdf,png,jpg)</label>
+                </div>
+      
+                <div class="form-control">
+                    <label>İdeanız Haqqında<img class="star" src="{% static 'img/star.svg' %}" alt=""></label>
+                    <textarea required class="input-contact-message" name="idea" type="text"></textarea>
+                </div>
+                <button class="contact-button" type="submit">Göndər</button>
+
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

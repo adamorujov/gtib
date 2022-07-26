@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/56ce35f76e.js" crossorigin="anonymous"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <link rel="stylesheet" href="{% static 'style/styleNurlan.css' %}">
     {% block title %}{% endblock %}
     {% block description %}{% endblock %}
     {% block keywords %}{% endblock%}
@@ -18,6 +19,14 @@
     {% include 'header.html' %}
     <!-- HEADER ENDS -->
 
+    {% if messages %}
+       {% for message in messages %}
+          <div>
+            <span>{{ message }}</span>
+          </div>
+        {% endfor %}
+    {% endif %}
+
     <!-- CONTENT STARTS -->
     {% block content %}{% endblock %}
     <!-- CONTENT ENDS -->
@@ -26,6 +35,10 @@
     {% include 'footer.html' %}
     <!-- FOOTER ENDS -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {% block javascript %}{% endblock %}
     <script src="{% static 'scripts/script.js' %}"></script>
 
 </body>

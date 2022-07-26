@@ -1,4 +1,4 @@
-const introGalleryMain = document.querySelector('.intro__gallery-main img')
+/*const introGalleryMain = document.querySelector('.intro__gallery-main img')
 const introGallerySub = document.querySelectorAll('.intro__gallery-sub img')
 
 introGallerySub.forEach((image, index) => {
@@ -10,7 +10,7 @@ introGallerySub.forEach((image, index) => {
         introGalleryMain.setAttribute('src', subImageSource)
     })
 })
-
+*/
 const accordionBtn = document.querySelectorAll('.faq__item h2')
 
 accordionBtn.forEach((btn) => {
@@ -50,3 +50,23 @@ document.querySelector('.nav__mobile-btn').addEventListener('click', () => {
 document.querySelector('.logout').addEventListener('click', () => {
     document.querySelector('.nav__mobile').style.display = 'none'
 })
+
+function startTime() {
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    h = checkTime(h);
+    m = checkTime(m);
+    document.querySelector('.header__clock-digit:nth-child(1)').innerHTML = h[0]
+    document.querySelector('.header__clock-digit:nth-child(2)').innerHTML = h[1]
+    document.querySelector('.header__clock-digit:nth-child(4)').innerHTML = m[0]
+    document.querySelector('.header__clock-digit:nth-child(5)').innerHTML = m[1]
+    setTimeout(startTime, 1000);
+}
+  
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};
+    return i.toString();
+}
+
+startTime()
