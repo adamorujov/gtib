@@ -22,11 +22,13 @@
                 <div class="container">
                     <div class="photo__main gallery">
                         {% for photo in page_obj %}
-                        <a href="{{ photo.image.url }}" data-lightbox="models" data-title="Caption{{ forloop.counter }}">
+                        <a href="{{ photo.image.url }}" data-lightbox="models" data-title="{{ photo.title }}">
                             <div class="photo__block myBtn ">
                                 <img src="{{ photo.image.url }}" class="img-slider" alt="{{ photo.title }}" style={width:"500px";}>
                             </div>
                         </a>
+                        {% empty %}
+                        <p style="text-align:center">Şəkil yoxdur!</p>
                         {% endfor %}
                         
                     </div>

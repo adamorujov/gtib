@@ -16,7 +16,7 @@
             <div class="photo__main">
                 {% for photo in page_obj %}
                 <div class="photo__block myBtn">
-                    <a href="{% url 'gtib:photogallery' %}">
+                    <a href="{% url 'gtib:photogallery' photo.slug %}">
                         <img src="{{ photo.image.url }}" alt="{{ photo.title }}">
                         <div class="photo__info">
                             <p>--{{ photo.title }}</p>

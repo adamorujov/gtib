@@ -5,9 +5,8 @@ from gtib.models import (PageSettings, SocialMediaAccount, NewsTypeModel,
                         NewsCategoryModel, NewsModel, FAQsModel, 
                         FormmModel, FormmChoices, OfferQuestionModel, 
                         VolunteersModel, EventModel, VolunteerModel, 
-                        DirectorModel, PartnerModel, YouthOrganizationModel,
-                        EBookModel, PrintModel, OfferModel,
-                        IdeaModel, PhotoModel)
+                        DirectorModel, PartnerModel,EBookModel, 
+                        OfferModel, IdeaModel, PhotoModel, PhotosModel)
 
 class SocialMediaAccountAdmin(admin.TabularInline):
     model = SocialMediaAccount
@@ -50,10 +49,6 @@ class FormmAdmin(admin.ModelAdmin):
 class EBookAdmin(admin.ModelAdmin):
     readonly_fields = ("slug",)
 
-@admin.register(PrintModel)
-class PrintAdmin(admin.ModelAdmin):
-    readonly_fields = ("slug",)
-
 @admin.register(OfferModel)
 class OfferAdmin(admin.ModelAdmin):
     readonly_fields = ("sent_date",)
@@ -61,6 +56,10 @@ class OfferAdmin(admin.ModelAdmin):
 @admin.register(IdeaModel)
 class IdeaAdmin(admin.ModelAdmin):
     readonly_fields = ("sent_date",)
+
+@admin.register(PhotoModel)
+class IdeaAdmin(admin.ModelAdmin):
+    readonly_fields = ("slug",)
 
 admin.site.register(NewsTypeModel)
 admin.site.register(NewsCategoryModel)
@@ -72,8 +71,7 @@ admin.site.register(EventModel)
 admin.site.register(VolunteerModel)
 admin.site.register(DirectorModel)
 admin.site.register(PartnerModel)
-admin.site.register(YouthOrganizationModel)
-admin.site.register(PhotoModel)
+admin.site.register(PhotosModel)
 
 
 AdminSite.site_title = _("GTIB sayt administrasiyası")

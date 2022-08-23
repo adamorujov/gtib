@@ -97,7 +97,7 @@ class NewsModel(models.Model):
     content = RichTextField("Mövzu")
     pub_date = models.DateTimeField("Nəşr olunma tarixi", auto_now_add=True)
     modified_date = models.DateTimeField("Yenilənmə tarixi", auto_now=True)
-    slug = models.SlugField("Sluq", max_length=300, blank=True, null=True)
+    slug = models.SlugField("Slaq", max_length=300, blank=True, null=True)
 
     class Meta:
         verbose_name = "Xəbər"
@@ -259,24 +259,11 @@ class PartnerModel(models.Model):
         return self.name
 
 
-class YouthOrganizationModel(models.Model):
-    logo = models.ImageField("Loqo", blank=True, null=True)
-    name = models.CharField("Ad", max_length=256)
-    link = models.URLField("Keçid linki", max_length=256, blank=True, null=True)
-
-    class Meta:
-        verbose_name = "Gənclər Təşkilatı" 
-        verbose_name_plural = "Gənclər Təşkilatları"
-        ordering = ("-id",)
-
-    def __str__(self) -> str:
-        return self.name
-
 class EBookModel(models.Model):
     image = models.ImageField("Şəkil")
     title = models.CharField("Başlıq", max_length=256)
     description = models.TextField("Haqqında")
-    slug = models.SlugField("Sluq", max_length=256)
+    slug = models.SlugField("Slaq", max_length=256)
     book_file = models.FileField("Kitab", upload_to="uploads/", blank=True, null=True)
 
     class Meta:
@@ -288,35 +275,6 @@ class EBookModel(models.Model):
         unique_slug = slugify(self.title)
         num = 1
         while EBookModel.objects.filter(slug=unique_slug).exists():
-            unique_slug = '{}-{}'.format(unique_slug, num)
-            num += 1
-        return unique_slug
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = self._generate_unique_slug()
-        super().save(*args, **kwargs)
-
-    def __str__(self) -> str:
-        return self.title
-
-
-class PrintModel(models.Model):
-    image = models.ImageField("Şəkil")
-    title = models.CharField("Başlıq", max_length=256)
-    description = models.TextField("Haqqında")
-    slug = models.SlugField("Sluq", max_length=256)
-    pub_date = models.DateField("Nəşr tarixi", default=timezone.now)
-
-    class Meta:
-        ordering = ("-id",)
-        verbose_name = "Nəşr"
-        verbose_name_plural = "Nəşrlər"
-
-    def _generate_unique_slug(self):
-        unique_slug = slugify(self.title)
-        num = 1
-        while PrintModel.objects.filter(slug=unique_slug).exists():
             unique_slug = '{}-{}'.format(unique_slug, num)
             num += 1
         return unique_slug
@@ -373,10 +331,39 @@ class IdeaModel(models.Model):
         return self.name + " " + self.surname
 
 
+
 class PhotoModel(models.Model):
     image = models.ImageField("Şəkil")
     title = models.CharField("Başlıq", max_length=256)
     pub_date = models.DateField("Tarix")
+    slug = models.SlugField("Slaq", max_length=300, blank=True, null=True)
+
+    class Meta:
+        ordering = ("-id",)
+        verbose_name = "Foto qalereya"
+        verbose_name_plural = "Foto qalereya"
+
+    def _generate_unique_slug(self):
+        unique_slug = slugify(self.title)
+        num = 1
+        while PhotoModel.objects.filter(slug=unique_slug).exists():
+            unique_slug = '{}-{}'.format(unique_slug, num)
+            num += 1
+        return unique_slug
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self._generate_unique_slug()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+class PhotosModel(models.Model):
+    image = models.ImageField("Şəkil")
+    title = models.CharField("Başlıq", max_length=256)
+    pub_date = models.DateField("Tarix")
+    gallery = models.ForeignKey(PhotoModel, on_delete=models.CASCADE, verbose_name="Qalereya")
 
     class Meta:
         ordering = ("-id",)

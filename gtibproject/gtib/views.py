@@ -9,9 +9,8 @@ from gtib.models import (
     FAQsModel, FormmModel, FormmChoices, 
     OfferQuestionModel, EventModel, VolunteersModel,
     PartnerModel, DirectorModel, VolunteerModel, 
-    YouthOrganizationModel, EBookModel, PrintModel,
-    OfferModel, IdeaModel, PhotoModel,
-    VideoModel
+    EBookModel, OfferModel, IdeaModel, 
+    PhotoModel, VideoModel, PhotosModel
     )
 
 
@@ -47,7 +46,7 @@ class IndexView(View):
             self.announcement_news = NewsModel.objects.filter(Q(type__name__startswith="Elanlar"))[:3]
             self.context["announcement_news"] = self.announcement_news
 
-        if NewsModel.objects.filter(Q(type__name__startswith="Gənclər") | Q(type__name__startswith="İdman")).exists():
+        if NewsModel.objects.filter(Q(type__name__startswith="Gənclər və İdman")).exists():
             self.youngs_and_sport_news = NewsModel.objects.filter(Q(type__name__startswith="Gənclər") | Q(type__name__startswith="İdman"))[:3]
             self.context["youngs_and_sport_news"] = self.youngs_and_sport_news
 
@@ -563,6 +562,7 @@ class CultureView(View):
         self.context = {
             "pagesettings": self.pagesettings,
         }
+    
         return render(request, 'medeniyyet.html', self.context)
 
     def post(self, request, *args, **kwargs):
@@ -619,7 +619,7 @@ class EBooksView(View):
         self.context = {
             "pagesettings": self.pagesettings,
         }
-        paginator = Paginator(self.ebooks, 2)
+        paginator = Paginator(self.ebooks, 4)
         page_number = request.GET.get("page")
         self.page_obj = paginator.get_page(page_number)
 
@@ -904,9 +904,9 @@ class NewsDetailView(View):
 
 class PhotoGalleryView(View):
     pagesettings = PageSettings.objects.first()
-    photos = PhotoModel.objects.all()
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, slug, *args, **kwargs):
+        self.photos = PhotosModel.objects.filter(gallery__slug=slug)
         self.context = {
             "pagesettings": self.pagesettings,
         }

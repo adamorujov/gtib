@@ -22,7 +22,7 @@ urlpatterns = [
 
     path('fotolar/', views.PhotosView.as_view(), name="photos"),
     path('elanlar/', views.AnouncementsView.as_view(), name="anouncements"),
-    path('foto-qalereya/', views.PhotoGalleryView.as_view(), name="photogallery"),
+    path('foto-qalereya/<slug:slug>/', views.PhotoGalleryView.as_view(), name="photogallery"),
 
     path('genclerteskilatlari/', views.YouthOrganizationsView.as_view(), name="youthorganizations"),
     path('genclerveidman/', views.YoungsAndSportView.as_view(), name="youngsandsport"),
