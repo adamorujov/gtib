@@ -26,7 +26,18 @@ SECRET_KEY = 't65e&g$v-cy5lputkxvj#rr$=@0@%g^3e5)5$91#cz@)i$*-ub'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = [
+    'https://gtib.az',
+]
+
+ALLOWED_HOSTS = ["*"]
+
+CORS_ORIGIN_WHITELIST = [
+    'https://gtib.az',
+]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Application definition
