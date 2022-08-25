@@ -14,7 +14,8 @@
                     <div class="intro__gallery-title">
                         <div class="intro__gallery-back"></div>
                         <div class="f-id" style="display:none;">{{ firstnews.id }}</div>
-                        <p class="f-content">{{ firstnews.content | safe | truncatechars_html:200 }}</p>
+                        {{ firstnews.content | safe | truncatechars_html:200 }}
+                        <p class="l-content"></p>
                         <a href="{% url 'gtib:newsdetail' firstnews.get_typename firstnews.slug %}" class="f-link intro__gallery-link">Ətraflı...</a>
                     </div>
                 </div>
@@ -194,7 +195,8 @@ $(".thisimg").on("click", function(){
     newsid = $(this).prev();
     id = $(".f-id");
     image = $(".f-image");
-    content = $(".f-content");
+    content = $(".f-id").next();
+    lcontent = $(".l-content");
     link = $(".f-link");
     $.ajax({
         type: "GET",
@@ -207,7 +209,8 @@ $(".thisimg").on("click", function(){
 
             id.text(newsid.html());
             image.attr("src", data.image);
-            content.html(data.content);
+            content.empty();
+            lcontent.html(data.content);
             link.attr("href", `/${data.typename}/${data.slug}/`);
 
             thisimg.attr("src", imagesrc);

@@ -59,7 +59,7 @@ class IndexView(View):
             thisnews = NewsModel.objects.get(id=id)
             data = {
                 "image": thisnews.image.url,
-                "content": thisnews.content,
+                "content": thisnews.content[:200],
                 "typename": thisnews.get_typename(),
                 "slug": thisnews.slug,
             }
